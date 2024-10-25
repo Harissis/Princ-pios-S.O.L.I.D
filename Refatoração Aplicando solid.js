@@ -1,6 +1,5 @@
-// Princípio SRP: Separando responsabilidades em classes distintas
+// (SRP)
 
-// Classe para representar um serviço do Pet Shop
 class Servico {
     constructor(tipo, preco) {
         this.tipo = tipo;
@@ -8,7 +7,7 @@ class Servico {
     }
 }
 
-// Princípio OCP: Essa classe pode ser estendida para adicionar novos tipos de serviços
+//  (OCP)
 class ServicoBanho extends Servico {
     constructor() {
         super("Banho", 30);
@@ -28,7 +27,7 @@ class Agendamento {
     }
 }
 
-// Princípio DIP: Processamento de pagamento é uma abstração injetável
+// (DIP)
 class ProcessadorPagamento {
     processar(total) {
         console.log(`Pagamento processado: R$${total}`);
@@ -57,16 +56,3 @@ class PetShop {
     }
 }
 
-// Exemplo de uso refatorado
-const processadorPagamento = new ProcessadorPagamento();
-const petShop = new PetShop("Happy Paws", processadorPagamento);
-const agendamento = new Agendamento();
-
-const banho = new ServicoBanho();
-const tosa = new ServicoTosa();
-
-petShop.adicionarServico(banho);
-petShop.adicionarServico(tosa);
-
-agendamento.agendar("João", banho);
-petShop.realizarPagamento();
